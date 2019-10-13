@@ -158,7 +158,7 @@ function plugin_google_site_translate_convert() {
 	$params = plugin_google_site_translate_params($args);
 	if (isset($params['_error']) && $params['_error'] != '') {
 		// パラメータエラーがある場合
-		return '#google_site_translate: ' . $params['_error'];
+		return '#google_site_translate ' . $params['_error'];
 	}
 
 	// 翻訳言語セット
@@ -226,7 +226,7 @@ function googleTranslateElementInit2() {
 <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit2"></script>
 <script type="text/javascript">
 function GoogleTranslateGetCurrentLang() {
-	var keyValue = document['cookie'].match('(^|;) ? googtrans=([^;]*)(;|$)');
+	var keyValue = document['cookie'].match('(^|;) ? googtrans = ([^;]*)(;|$)');
 	return keyValue ? keyValue[2].split('/')[2] : null;
 }
 function GoogleTranslateFireEvent(element, event) {
@@ -245,20 +245,20 @@ function GoogleTranslateFireEvent(element, event) {
 }
 function doGoogleTranslate(lang_pair) {
 	if (lang_pair.value) lang_pair = lang_pair.value;
-	if (lang_pair=='') return;
+	if (lang_pair == '') return;
 	var lang=lang_pair.split('|')[1];
 	if (GoogleTranslateGetCurrentLang() == null && lang == lang_pair.split('|')[0]) {
 		return;
 	}
 	var teCombo;
 	var sel = document.getElementsByTagName('select');
-	for (var i=0;i<sel.length;i++) {
+	for (var i=0; i < sel.length; i++) {
 		if(/goog-te-combo/.test(sel[i].className)){
-			teCombo=sel[i];
+			teCombo = sel[i];
 			break;
 		}
 	}
-	if (document.getElementById('google_site_translate_element2') == null || document.getElementById('google_site_translate_element2').innerHTML.length==0 || teCombo.length==0 || teCombo.innerHTML.length==0) {
+	if (document.getElementById('google_site_translate_element2') == null || document.getElementById('google_site_translate_element2').innerHTML.length==0 || teCombo.length==0 || teCombo.innerHTML.length == 0) {
 		setTimeout(function(){doGoogleTranslate(lang_pair)}, 500);
 	} else {
 		teCombo.value = lang;
@@ -275,6 +275,6 @@ EOM;
 function plugin_google_site_translate_inline() {
 	// インライン型プラグイン（&google_site_translate;）としては動作しない
 	$args = func_get_args();
-	return call_user_func_array('Do not use google_site_translate_inline: ', $args);}
+	return call_user_func_array('Do not use inline google_site_translate: ', $args);}
 
 ?>
