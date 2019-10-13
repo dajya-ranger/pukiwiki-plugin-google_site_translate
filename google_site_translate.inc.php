@@ -178,7 +178,7 @@ $html_code = <<< EOM
 		font-size: 14px!important;
 		width: 100%;
 		vertical-align: baseline;
-		border-radius:5px;
+		border-radius: 5px;
 	}
 	select, input[type="color" i][list] {
 		background-color: rgb(248, 248, 248);
