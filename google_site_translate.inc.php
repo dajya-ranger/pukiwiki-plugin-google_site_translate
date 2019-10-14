@@ -150,7 +150,8 @@ function plugin_google_site_translate_params($lang_args) {
 }
 
 function plugin_google_site_translate_convert() {
-	// ブロック型プラグイン #google_site_translate([翻訳先言語1],[翻訳先言語n])
+	// ブロック型プラグイン
+	// #google_site_translate([翻訳先言語1],[翻訳先言語2],･･･[翻訳先言語n])
 	$args = func_get_args();
 	$languages;
 
