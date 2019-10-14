@@ -251,20 +251,20 @@ function doGoogleTranslate(lang_pair) {
 	if (GoogleTranslateGetCurrentLang() == null && lang == lang_pair.split('|')[0]) {
 		return;
 	}
-	var teCombo;
+	var gstCombo;
 	var sel = document.getElementsByTagName('select');
 	for (var i=0; i < sel.length; i++) {
 		if(/goog-te-combo/.test(sel[i].className)){
-			teCombo = sel[i];
+			gstCombo = sel[i];
 			break;
 		}
 	}
-	if (document.getElementById('google_site_translate_element2') == null || document.getElementById('google_site_translate_element2').innerHTML.length==0 || teCombo.length==0 || teCombo.innerHTML.length == 0) {
+	if (document.getElementById('google_site_translate_element2') == null || document.getElementById('google_site_translate_element2').innerHTML.length==0 || gstCombo.length==0 || gstCombo.innerHTML.length == 0) {
 		setTimeout(function(){doGoogleTranslate(lang_pair)}, 500);
 	} else {
-		teCombo.value = lang;
-		GoogleTranslateFireEvent(teCombo, 'change');
-		GoogleTranslateFireEvent(teCombo, 'change');
+		gstCombo.value = lang;
+		GoogleTranslateFireEvent(gstCombo, 'change');
+		GoogleTranslateFireEvent(gstCombo, 'change');
 	}
 }
 </script>
