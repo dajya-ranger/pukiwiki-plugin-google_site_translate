@@ -1,21 +1,23 @@
 <?php
 
-/*
+/**
  * google_site_translate.inc.php
  *
  * Googleサイト翻訳プラグイン
  *
- * 作成者：オヤジ戦隊ダジャレンジャー(Twitter:@dajya_ranger_)
- * サイト：SEの良心（https://dajya-ranger.com/）
- *
- * 修正歴：
- *
- * Version 0.1.0
- * Date    2019/10/13
- * Update  
- * License The same as PukiWiki
+ * @author		オヤジ戦隊ダジャレンジャー <red@dajya-ranger.com>
+ * @copyright	Copyright © 2019, dajya-ranger.com
+ * @link		https://dajya-ranger.com/pukiwiki/google-site-translate-plugin/
+ * @example		#google_site_translate[([lang1],[lang2],･･･[lang-n])]
+ * @license		Apache License 2.0
+ * @version		0.1.1
+ * @since 		0.1.1 2019/10/24 自国言語設定を定数化
+ * @since 		0.1.0 2019/10/13 暫定初公開
  *
  */
+
+// 自国言語設定
+define('PLUGIN_NATIVE_LANGUAGE', 'ja');
 
 function plugin_google_site_translate_params($lang_args) {
 	// 翻訳言語パラメータ設定用
@@ -151,9 +153,11 @@ function plugin_google_site_translate_params($lang_args) {
 
 function plugin_google_site_translate_convert() {
 	// ブロック型プラグイン
-	// #google_site_translate([翻訳先言語1],[翻訳先言語2],･･･[翻訳先言語n])
-	$args = func_get_args();
-	$languages;
+	// #google_site_translate[([翻訳先言語1],[翻訳先言語2],･･･[翻訳先言語n])]
+
+	$_ = function($const){return $const;};	// 定数展開用
+	$args = func_get_args();				// プラグイン引数
+	$languages;								// 翻訳対象言語
 
 	// パラメータセット
 	$params = plugin_google_site_translate_params($args);
@@ -221,7 +225,7 @@ $html_code = <<< EOM
 <script type="text/javascript">
 function googleTranslateElementInit2() {
 	new google.translate.TranslateElement({
-		pageLanguage: 'ja', includedLanguages: '{$languages}', autoDisplay: false}, 'google_site_translate_element2');
+		pageLanguage: '{$_(PLUGIN_NATIVE_LANGUAGE)}', includedLanguages: '{$languages}', autoDisplay: false}, 'google_site_translate_element2');
 }
 </script>
 <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit2"></script>
