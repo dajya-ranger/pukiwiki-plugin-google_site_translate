@@ -1,5 +1,7 @@
 # pukiwiki-plugin-google_site_translate
+
 PukiWiki用Googleサイト翻訳プラグイン
+
 - 暫定公開版です（[PukiWiki1.5.2](https://pukiwiki.osdn.jp/?PukiWiki/Download/1.5.2)で動作確認済）
 - Google翻訳のウェブサイト翻訳ツールが**2018年末に新規アカウントの登録を終了しています**が、本プラグインではGoogleウェブサイト翻訳を利用して[PukiWiki](https://ja.wikipedia.org/wiki/PukiWiki)サイトを104言語（日本語含む）にて翻訳するものです（完全無料で利用に制限はありません）
 - 本プラグインは、Google以外の特定企業または特定個人に紐付けられたサービスによるサイト翻訳ではないため、それによって生じる金銭的またはそれに類するあらゆる制約を受けないプラグインとして独立しています（単純に[Google翻訳サイト](https://translate.google.com/)へURLを送出するものではありません）
